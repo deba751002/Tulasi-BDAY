@@ -269,4 +269,8 @@ $(document).ready(function () {
 		$('#memories_section').fadeIn('slow');
 		$(this).fadeOut('slow');
 	});
+
+	$('#play_again').click(function () {
+		window.location.href = 'index.html';
+	});
 });

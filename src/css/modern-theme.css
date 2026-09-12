@@ -262,6 +262,11 @@ img {
 	margin: 0;
 }
 
+.play-again-row {
+	text-align: center;
+	margin-top: 20px;
+}
+
 /* ---------- Scroll-reveal (memory cards fade up as they enter view) ---------- */
 
 .scroll-reveal {
