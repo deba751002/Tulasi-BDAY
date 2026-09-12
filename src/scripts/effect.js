@@ -94,14 +94,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-	var vw;
-	$(window).resize(function () {
-		vw = $(window).width() / 2;
-		$('#card *').hide();
-	});
-
 	$(document).on('click', '.btn-primary', playChime);
-	$(document).on('click', '#open', burstConfetti);
 
 	observeReveal('.memory-card');
 
@@ -129,6 +122,7 @@ $(document).ready(function () {
 
 	$('#turn_on').click(function () {
 		safePlay($('.song')[0]);
+		$('.about-tulasi').fadeOut('slow');
 		$('#bulb_yellow').addClass('bulb-glow-yellow');
 		$('#bulb_red').addClass('bulb-glow-red');
 		$('#bulb_blue').addClass('bulb-glow-blue');
@@ -266,27 +260,12 @@ $(document).ready(function () {
 		$('.balloons h2').fadeIn(3000);
 
 		$(this).fadeOut('slow').delay(3000).promise().done(function () {
-			$('#story').fadeIn('slow');
-		});
-	});
-
-	$('#story').click(function () {
-		$(this).fadeOut('slow');
-		$('#card').css('display', 'block');
-		$('#card').show();
-		$('#card').css('position', 'absolute');
-		$('#card').css('z-index', 9999);
-		$('.cake').fadeOut('fast').promise().done(function () {
-			$('.message').fadeIn('slow');
-		});
-		$('#card').fadeIn('slow');
-
-		$(this).fadeOut('slow').delay(3000).promise().done(function () {
 			$('#our_memories').fadeIn('slow');
 		});
 	});
 
 	$('#our_memories').click(function () {
+		burstConfetti();
 		$('#memories_section').fadeIn('slow');
 		$(this).fadeOut('slow').delay(1500).promise().done(function () {
 			$('#wishes_wall').fadeIn('slow');
