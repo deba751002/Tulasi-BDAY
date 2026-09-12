@@ -5,9 +5,9 @@
 <!--[if gt IE 8]> <html> <![endif]-->
 <!--[if !IE]><!--><html lang="en"><!-- <![endif]-->
 <head>
-	<title>Happy Birthday Tapu</title>
+	<title>Happy Birthday Tulasi</title>
 	<meta charset="UTF-8" />
-	<meta name="description" content="Happy Birthday Tapu">
+	<meta name="description" content="Happy Birthday Tulasi">
 	<meta name="robots" content="index, follow" />
 	<link rel="author" href="https://in.linkedin.com/in/debasish-lenka-0a9815352/" /> 
     <meta name="keywords" content="Birthday, Happy">
@@ -24,18 +24,36 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="src/css/stylesheet.css">
 	<link rel="stylesheet" type="text/css" href="src/css/loading.css">
+	<link rel="stylesheet" type="text/css" href="src/css/modern-theme.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.5.0/balloon.min.css">
-<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 	<link href='https://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
-	<!-- <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'> -->
-	<!-- <link rel="stylesheet/less" href="src/css/cake.less"> -->
-	<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
 </head>
 
 <body id ="bodyy">
 	<div class="loading"></div>
+	<script>
+		// Safety net: if jQuery/any script fails to load or is slow, force the
+		// welcome screen open after 4s regardless, so the page never gets stuck
+		// behind the loading spinner. The nicer jQuery fade-in below still runs
+		// first when everything loads normally.
+		setTimeout(function () {
+			var loading = document.querySelector('.loading');
+			var container = document.querySelector('.container');
+			if (loading) { loading.style.display = 'none'; }
+			if (container) { container.style.display = 'block'; }
+		}, 4000);
+	</script>
+	<div id="countdown_screen">
+		<h2>Tulasi's Birthday Party unlocks in</h2>
+		<div class="countdown-timer">
+			<div class="countdown-unit"><div class="num" id="cd_days">00</div><div class="label">Days</div></div>
+			<div class="countdown-unit"><div class="num" id="cd_hours">00</div><div class="label">Hours</div></div>
+			<div class="countdown-unit"><div class="num" id="cd_minutes">00</div><div class="label">Minutes</div></div>
+			<div class="countdown-unit"><div class="num" id="cd_seconds">00</div><div class="label">Seconds</div></div>
+		</div>
+	</div>
 	<audio class="song" controls loop>
         <source src="audio/hbd.mp3"></source>
 	   Your browser isn't invited for super fun audio time.
@@ -47,25 +65,31 @@
     </audio>
 
     <div class="balloons col-xs-2 text-center" id="b1">
-    	<h3 style="color:#F2B300;">H</h3>
+    	<h3 style="color:#D4A574;">H</h3>
     </div>
     <div class="balloons col-xs-2 text-center" id="b2">
-    	<h3 style="color:#0719D4;">B</h3>
+    	<h3 style="color:#6B2F4D;">B</h3>
     </div>
 	<div class="balloons col-xs-2 text-center" id="b3">
-    	<h3 style="color:#D14D39;">D</h3>
+    	<h3 style="color:#B76E79;">D</h3>
     </div>
 	<div class="balloons col-xs-2 text-center" id="b4">
-    	<h3 style="color:#8FAD00;">T</h3>
+    	<h3 style="color:#8B5A6F;">T</h3>
     </div>
 	<div class="balloons col-xs-2 text-center" id="b5">
-    	<h3 style="color:#8377E4;">A</h3>
+    	<h3 style="color:#D4A574;">U</h3>
     </div>
     <div class="balloons col-xs-2 text-center" id="b6">
-    	<h3 style="color:#99C96A;">P</h3>
+    	<h3 style="color:#6B2F4D;">L</h3>
     </div>
     <div class="balloons col-xs-2 text-center" id="b7">
-    	<h3 style="color:#20CFB4;">U</h3>
+    	<h3 style="color:#B76E79;">A</h3>
+    </div>
+    <div class="balloons col-xs-2 text-center" id="b8">
+    	<h3 style="color:#8B5A6F;">S</h3>
+    </div>
+    <div class="balloons col-xs-2 text-center" id="b9">
+    	<h3 style="color:#D4A574;">I</h3>
     </div>
 
     <img src="images/ballons/Balloon-Border.png" width="100%" class="balloon-border">
@@ -105,7 +129,13 @@
  
 
 	<div class="container">
-		
+
+		<div class="about-tulasi">
+			<p class="about-eyebrow">✨ Celebrating ✨</p>
+			<h1 class="about-name">Tulasi</h1>
+			<p class="about-tagline">A little party made just for you</p>
+		</div>
+
 		<div class="row">
 			<div class="col-md-2 col-xs-2 bulb-holder">
 				<div class="bulb" id="bulb_yellow"></div>
@@ -137,7 +167,7 @@
 		<div class="navbar navbar-fixed-bottom">
 			<div class="row">
 				<div class="col-md-6 text-center col-md-offset-3">
-					<button class="btn btn-primary" id="initial">Welcome to Tapu's BirthDay Party</button>
+					<button class="btn btn-primary" id="initial">Welcome to Tulasi's BirthDay Party - Click Here</button>
 					<button class="btn btn-primary" id="turn_on">Turn On Lights</button>
 					<button class="btn btn-primary" id="play">Play Music</button>
 					<button class="btn btn-primary" id="bannar_coming">Let's Decorate</button>
@@ -146,6 +176,8 @@
 					<button class="btn btn-primary" id="cake_fadein">Most Delicious Cake Ever</button>
 					<button class="btn btn-primary" id="dj_time">DJ Time</button>
 					<button class="btn btn-primary" id="story">A mesage for you</button>
+					<button class="btn btn-primary" id="our_memories">Our Memories</button>
+					<button class="btn btn-primary" id="wishes_wall">Leave a Wish</button>
 					<button class="btn btn-primary" id="picture_time">Special Moments</button>
 				</div>
 			</div>
@@ -157,15 +189,15 @@
 	<div id="card">
 <div id="card-inside">
 <div class="wrap">
-<center><p style="font-size:3vw;" class="animated infinite wobble"><b><u>Happy Birthday Tapu!</b></u></p><center>
-<p style="font-size:1vw;" > Hey Tapu, Today is a very special and beautiful day . So let's make it the best celebration with all your family members. &nbsp;<i class="em-svg em-blush"></i></p>
-<p style="font-size:1vw;"> Happiest Birthday Tapu . I made all this as a birthday present to you. I wish the best for you and thanks for being there for me , thanks for the friendship we made, thanks for everything.
-  Enjoy every single moment that you experience today, fill it with your most beautiful smile and make it the best memory. </p><p style="font-size:3vw;" class="signed"><u>Made With </b><b> <i class="em-svg em-heart"></i></p>
+<center><p style="font-size:3vw;" class="animated infinite wobble"><b><u>Happy Birthday Tulasi!</b></u></p><center>
+<p style="font-size:1vw;" > Hey Tulasi, Today is a very special and beautiful day . So let's make it the best celebration with all your family members. &nbsp;🌸</p>
+<p style="font-size:1vw;"> Happiest Birthday Tulasi . I made all this as a birthday present to you. I wish the best for you and thanks for being there for me , thanks for the friendship we made, thanks for everything.
+  Enjoy every single moment that you experience today, fill it with your most beautiful smile and make it the best memory. </p><p style="font-size:3vw;" class="signed"><u>Made With </b><b> 🤍</p>
 </div>
 </div>
 <div id="card-front">
 <div class="wrap">
-<h1 style="font-size:5vw;" class="animated infinite swing">HBD 2025 Tapu!</h1>
+<h1 style="font-size:5vw;" class="animated infinite swing">HBD 2026 Tulasi!</h1>
 <div class="cake_and_velas">
 <div class="velas">
 <div class="fuego"></div>
@@ -187,10 +219,62 @@
 <div class="shadow"></div>
 </div>
 </div>
+</div>
+
+<div id="memories_section" class="reveal-section">
+	<h2 class="section-title">Our Memories 🌸</h2>
+	<div class="memories-gallery">
+		<div class="memory-card scroll-reveal">
+			<img src="images/humans/f1.jpeg" alt="memory">
+			<p class="memory-caption">A cherished moment</p>
+		</div>
+		<div class="memory-card scroll-reveal">
+			<img src="images/humans/f2.jpeg" alt="memory">
+			<p class="memory-caption">So much fun together</p>
+		</div>
+		<div class="memory-card scroll-reveal">
+			<img src="images/humans/f6.jpeg" alt="memory">
+			<p class="memory-caption">Always smiling</p>
+		</div>
+		<div class="memory-card scroll-reveal">
+			<img src="images/humans/f8.jpg" alt="memory">
+			<p class="memory-caption">Unforgettable day</p>
+		</div>
+		<div class="memory-card scroll-reveal">
+			<img src="images/humans/f10.jpeg" alt="memory">
+			<p class="memory-caption">Best memories</p>
+		</div>
+		<div class="memory-card scroll-reveal">
+			<img src="images/humans/together/us1.jpg" alt="memory">
+			<p class="memory-caption">Together always</p>
+		</div>
+		<div class="memory-card scroll-reveal">
+			<img src="images/humans/together/us2.jpeg" alt="memory">
+			<p class="memory-caption">Forever family</p>
+		</div>
+		<div class="memory-card scroll-reveal">
+			<img src="images/humans/f11.jpeg" alt="memory">
+			<p class="memory-caption">Brother and sister</p>
+		</div>
+		<div class="memory-card scroll-reveal">
+			<img src="images/humans/f12.jpg" alt="memory">
+			<p class="memory-caption">The whole family</p>
+		</div>
+	</div>
+</div>
+
+<div id="wishes_section" class="reveal-section">
+	<h2 class="section-title">Leave a Birthday Wish ✨</h2>
+	<form id="wish_form" class="wish-form">
+		<input type="text" id="wish_name" placeholder="Your name" required>
+		<textarea id="wish_message" placeholder="Write your birthday wish for Tulasi..." required></textarea>
+		<button type="submit" class="btn btn-primary">Add Wish</button>
+	</form>
+	<ul id="wish_list" class="wish-list"></ul>
+</div>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="src/scripts/jquery.min.js"></script>
+<script src="src/scripts/bootstrap.min.js"></script>
 <script  src="src/scripts/index.js"></script>
 <script src="src/scripts/effect.js"></script>
 <script>

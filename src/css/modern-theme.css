@@ -1,0 +1,408 @@
+/* Modern visual refresh layered on top of stylesheet.css — loaded after it so these rules win. */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+:root {
+	--ivory: #FBF3EA;
+	--blush: #F3D4D0;
+	--rose-gold: #C99383;
+	--plum: #5C2A45;
+	--plum-dark: #3A1830;
+}
+
+body {
+	background-image:
+		radial-gradient(circle at 15% 20%, rgba(201, 147, 131, 0.20), transparent 45%),
+		radial-gradient(circle at 85% 15%, rgba(92, 42, 69, 0.18), transparent 45%),
+		radial-gradient(circle at 50% 90%, rgba(243, 212, 208, 0.16), transparent 50%);
+	background-repeat: no-repeat;
+}
+
+/* One typeface family everywhere (the original mixed in Lobster + Indie Flower + Signika + Josefin Sans) */
+.bannar,
+.message p,
+.btn-primary,
+#card h1,
+#card-inside,
+p.signed,
+.bday,
+.section-title,
+.about-tulasi {
+	font-family: 'Poppins', sans-serif !important;
+}
+
+.btn-primary {
+	border: none;
+	background: linear-gradient(135deg, var(--rose-gold), var(--plum));
+	border-radius: 50px;
+	padding: 12px 26px;
+	margin: 4px;
+	letter-spacing: 0.5px;
+	box-shadow: 0 6px 18px rgba(92, 42, 69, 0.35);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+	background: linear-gradient(135deg, #d9ab9d, #6f3555);
+	border: none;
+	transform: translateY(-3px);
+	box-shadow: 0 10px 24px rgba(92, 42, 69, 0.5);
+}
+
+#card-inside .wrap {
+	background: linear-gradient(160deg, var(--ivory), var(--blush));
+}
+
+#card-front {
+	background-color: var(--rose-gold);
+	background-image: linear-gradient(to bottom, var(--rose-gold) 0%, var(--plum) 100%) !important;
+}
+
+/* no border-radius/overflow here: #card-front is a 3D flip card (rotateY + backface-visibility) — overflow other than visible flattens that 3D context and breaks the flip */
+
+#card h1 {
+	text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.5);
+}
+
+.self-border {
+	border-radius: 12px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- About Tulasi intro ---------- */
+
+.about-tulasi {
+	text-align: center;
+	color: #fff;
+	padding: 30px 20px 10px;
+}
+
+.about-eyebrow {
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	font-size: 13px;
+	opacity: 0.8;
+	margin-bottom: 6px;
+}
+
+.about-name {
+	font-size: clamp(40px, 8vw, 84px);
+	font-weight: 800;
+	margin: 0;
+	background: linear-gradient(135deg, var(--blush), var(--rose-gold));
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	text-shadow: 0 4px 24px rgba(92, 42, 69, 0.4);
+}
+
+.about-tagline {
+	font-weight: 300;
+	opacity: 0.85;
+	margin-top: 6px;
+	font-size: clamp(13px, 2vw, 16px);
+}
+
+/* ---------- Responsive fit for every screen size ---------- */
+
+html, body {
+	max-width: 100%;
+	overflow-x: hidden;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* the inline vw font-sizes get unreadably small on narrow phones and huge on big desktops — clamp() keeps them in a sane range regardless of device */
+#card-inside .wrap p {
+	font-size: clamp(13px, 1.6vw, 19px) !important;
+	line-height: 1.5 !important;
+}
+
+#card-inside .wrap p.wobble {
+	font-size: clamp(20px, 3.2vw, 34px) !important;
+}
+
+#card-front .wrap h1.swing {
+	font-size: clamp(26px, 4.5vw, 64px) !important;
+}
+
+.navbar-fixed-bottom .btn-primary {
+	font-size: clamp(11px, 1.4vw, 14px);
+	padding: 10px 16px;
+}
+
+@media (max-width: 767px) {
+	#card-front, #card-inside {
+		width: 85%;
+	}
+
+	.wrap {
+		padding: 1em 1.2em;
+	}
+
+	.navbar-fixed-bottom .btn-primary {
+		padding: 8px 12px;
+		margin: 3px;
+	}
+
+	.cake-cover {
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100px;
+		height: 160px;
+	}
+}
+
+@media (max-width: 480px) {
+	#card-front, #card-inside {
+		width: 92%;
+	}
+
+	.navbar-fixed-bottom .btn-primary {
+		font-size: 11px;
+		padding: 7px 10px;
+	}
+}
+
+/* ---------- CSS-driven balloon flight (replaces the old per-balloon jQuery position loops) ---------- */
+
+.balloons,
+.balloon-border,
+.bannar {
+	filter: sepia(0.35) saturate(1.6) hue-rotate(300deg) brightness(1.05);
+}
+
+.balloons.balloon-float {
+	animation-name: balloonRise;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+}
+
+@keyframes balloonRise {
+	0%   { bottom: -200px; transform: translateX(0) rotate(-6deg); }
+	25%  { transform: translateX(30px) rotate(6deg); }
+	50%  { transform: translateX(-20px) rotate(-6deg); }
+	75%  { transform: translateX(25px) rotate(6deg); }
+	100% { bottom: 115vh; transform: translateX(-15px) rotate(-6deg); }
+}
+
+#b1.balloon-float { left: 6%;  animation-duration: 7s;   animation-delay: 0s; }
+#b2.balloon-float { left: 18%; animation-duration: 8.5s; animation-delay: 0.4s; }
+#b3.balloon-float { left: 30%; animation-duration: 6.5s; animation-delay: 0.8s; }
+#b4.balloon-float { left: 42%; animation-duration: 9s;   animation-delay: 0.2s; }
+#b5.balloon-float { left: 54%; animation-duration: 7.5s; animation-delay: 1s; }
+#b6.balloon-float { left: 66%; animation-duration: 8s;   animation-delay: 0.6s; }
+#b7.balloon-float { left: 76%; animation-duration: 6.8s; animation-delay: 1.2s; }
+#b8.balloon-float { left: 86%; animation-duration: 7.8s; animation-delay: 0.3s; }
+#b9.balloon-float { left: 94%; animation-duration: 8.8s; animation-delay: 0.9s; }
+
+/* ---------- Bulb string lights, retinted toward the rose-gold/plum palette ---------- */
+
+.bulb {
+	filter: sepia(0.45) saturate(1.8) hue-rotate(300deg) brightness(1.1);
+}
+
+/* ---------- Our Memories gallery ---------- */
+
+.section-title {
+	text-align: center;
+	font-weight: 700;
+	color: #fff;
+	text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+	margin: 30px 0 20px;
+	font-size: clamp(22px, 4vw, 34px);
+}
+
+#memories_section, #wishes_section {
+	position: relative;
+	z-index: 20;
+	padding: 20px 4vw 60px;
+}
+
+.memories-gallery {
+	display: flex;
+	gap: 16px;
+	overflow-x: auto;
+	padding: 10px 6vw 30px;
+	scroll-snap-type: x mandatory;
+}
+
+.memory-card {
+	flex: 0 0 auto;
+	scroll-snap-align: center;
+	width: 220px;
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 16px;
+	overflow: hidden;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+}
+
+.memory-card img {
+	width: 100%;
+	height: 220px;
+	object-fit: cover;
+	display: block;
+}
+
+.memory-caption {
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+	padding: 10px 12px;
+	margin: 0;
+}
+
+/* ---------- Wishes wall ---------- */
+
+.wish-form {
+	max-width: 500px;
+	margin: 0 auto 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.wish-form input,
+.wish-form textarea {
+	border: none;
+	border-radius: 12px;
+	padding: 12px 16px;
+	font-family: 'Poppins', sans-serif;
+	font-size: 14px;
+	resize: vertical;
+}
+
+.wish-form textarea {
+	min-height: 80px;
+}
+
+.wish-list {
+	list-style: none;
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.wish-list li {
+	background: rgba(255, 255, 255, 0.1);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	border-radius: 14px;
+	padding: 14px 18px;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	backdrop-filter: blur(6px);
+	-webkit-backdrop-filter: blur(6px);
+}
+
+.wish-list li strong {
+	display: block;
+	margin-bottom: 4px;
+	background: linear-gradient(135deg, var(--blush), var(--rose-gold));
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* ---------- Scroll-reveal (memory cards + wishes fade up as they enter view) ---------- */
+
+.scroll-reveal {
+	opacity: 0;
+	transform: translateY(24px);
+	transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-reveal.in-view {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* ---------- DJ Time flash, retinted (overrides stylesheet.css's peach_disc keyframes by name) ---------- */
+
+@keyframes peach_disc {
+	0%   { background-color: var(--plum-dark); }
+	25%  { background-color: var(--plum); }
+	50%  { background-color: var(--rose-gold); }
+	75%  { background-color: var(--blush); }
+	100% { background-color: var(--plum-dark); }
+}
+
+/* ---------- Confetti burst (card open) ---------- */
+
+.confetti-piece {
+	position: fixed;
+	top: -20px;
+	width: 8px;
+	height: 14px;
+	z-index: 20000;
+	pointer-events: none;
+	animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+	0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+	100% { transform: translateY(100vh) rotate(540deg); opacity: 0.2; }
+}
+
+/* ---------- Countdown screen (only shown when a target birthday date is configured in effect.js) ---------- */
+
+#countdown_screen {
+	position: fixed;
+	inset: 0;
+	z-index: 100000;
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: radial-gradient(circle at 50% 30%, var(--plum), var(--plum-dark) 70%);
+	color: #fff;
+	text-align: center;
+	font-family: 'Poppins', sans-serif;
+	padding: 20px;
+}
+
+#countdown_screen h2 {
+	font-size: clamp(20px, 4vw, 32px);
+	margin-bottom: 20px;
+}
+
+.countdown-timer {
+	display: flex;
+	gap: 18px;
+}
+
+.countdown-unit {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	border-radius: 14px;
+	padding: 16px 14px;
+	min-width: 70px;
+}
+
+.countdown-unit .num {
+	font-size: clamp(26px, 5vw, 44px);
+	font-weight: 700;
+	background: linear-gradient(135deg, var(--blush), var(--rose-gold));
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.countdown-unit .label {
+	font-size: 12px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	opacity: 0.7;
+}

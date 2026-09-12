@@ -1286,7 +1286,10 @@ body {
 	background-image: url('../../images/ballons/b7.png');
 }
 #b8,#b88{
-	background-image: url('../../images/ballons/b7.png');
+	background-image: url('../../images/ballons/b1.png');
+}
+#b9,#b99{
+	background-image: url('../../images/ballons/b2.png');
 }
 .balloons-rotate-behaviour-one {
 	-webkit-animation: balloons_rotate_one linear 10s infinite;
@@ -1595,7 +1598,11 @@ body {
 	bottom: 0;
 	padding:10px 0px 10px 0px;
 }
-#turn_on,#picture_time,#play, #bannar_coming, #balloons_flying,#cake_fadein,#light_candle,#dj_time,#story, #banner, #invite_friends, #self ,#f1,#f2,#f3,#f4,#f5,#f6,#f7,#f8,#f9,#f10,#f11,#f12, #cake_pink, #card, #candle{
+#turn_on,#picture_time,#play, #bannar_coming, #balloons_flying,#cake_fadein,#light_candle,#dj_time,#story, #banner, #invite_friends, #self ,#f1,#f2,#f3,#f4,#f5,#f6,#f7,#f8,#f9,#f10,#f11,#f12, #cake_pink, #card, #candle, #our_memories, #wishes_wall{
+	display: none;
+}
+
+.reveal-section {
 	display: none;
 }
 
@@ -1650,8 +1657,6 @@ body {
     	}
     }*/
 
-@import url('https://fonts.googleapis.com/css?family=Lobster');
-@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -2026,7 +2031,7 @@ font-family: 'Lobster', cursive;
 }
 
 .polaroid {
-  width: 240x;
+  width: 240px;
   height: 220px;
   position: absolute;
   float: left;
