@@ -98,6 +98,18 @@ $(document).ready(function () {
 
 	observeReveal('.memory-card');
 
+	// Photo lightbox: click any flying-friend photo or memory card to pop it up
+	// full-size; clicking anywhere on the overlay (including the photo) closes it.
+	$(document).on('click', '.self-border, .memory-card img', function (e) {
+		e.stopPropagation();
+		$('#lightbox_img').attr('src', $(this).attr('src'));
+		$('#photo_lightbox').addClass('active');
+	});
+
+	$('#photo_lightbox').on('click', function () {
+		$(this).removeClass('active');
+	});
+
 	$('#initial').click(function () {
 		safePlay($('.song')[0]);
 		$(this).fadeOut('slow').delay(50).promise().done(function () {
