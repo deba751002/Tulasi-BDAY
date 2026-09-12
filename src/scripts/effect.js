@@ -268,13 +268,6 @@ $(document).ready(function () {
 		burstConfetti();
 		$('#memories_section').fadeIn('slow');
 		$(this).fadeOut('slow').delay(1500).promise().done(function () {
-			$('#wishes_wall').fadeIn('slow');
-		});
-	});
-
-	$('#wishes_wall').click(function () {
-		$('#wishes_section').fadeIn('slow');
-		$(this).fadeOut('slow').delay(1500).promise().done(function () {
 			$('#picture_time').fadeIn('slow');
 		});
 	});
@@ -282,42 +275,4 @@ $(document).ready(function () {
 	$('#picture_time').click(function () {
 		window.location.replace('src/html/surprise.html');
 	});
-
-	// ---- Wishes wall: stored per-browser in localStorage (no backend on a static site) ----
-	function loadWishes() {
-		try {
-			return JSON.parse(localStorage.getItem('tulasi_wishes') || '[]');
-		} catch (e) {
-			return [];
-		}
-	}
-
-	function renderWishes() {
-		var wishes = loadWishes();
-		var $list = $('#wish_list').empty();
-		wishes.slice().reverse().forEach(function (w) {
-			$('<li class="scroll-reveal">').html('<strong></strong><span></span>')
-				.find('strong').text(w.name).end()
-				.find('span').text(w.message).end()
-				.appendTo($list);
-		});
-		observeReveal('.wish-list li');
-	}
-
-	$('#wish_form').submit(function (e) {
-		e.preventDefault();
-		var name = $('#wish_name').val().trim();
-		var message = $('#wish_message').val().trim();
-		if (!name || !message) { return; }
-
-		var wishes = loadWishes();
-		wishes.push({ name: name, message: message, time: Date.now() });
-		localStorage.setItem('tulasi_wishes', JSON.stringify(wishes));
-
-		$('#wish_name').val('');
-		$('#wish_message').val('');
-		renderWishes();
-	});
-
-	renderWishes();
 });
