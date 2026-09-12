@@ -69,8 +69,20 @@ p.signed,
 }
 
 .self-border {
+	/* Fixed vmin-based square so photos stay proportioned (never stretched) whether
+	   the screen is a wide desktop or a tall phone; object-fit crops instead of squashing. */
+	width: 17vmin;
+	height: 17vmin;
+	object-fit: cover;
 	border-radius: 12px;
 	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 480px) {
+	.self-border {
+		width: 20vmin;
+		height: 20vmin;
+	}
 }
 
 /* ---------- About Tulasi intro ---------- */
