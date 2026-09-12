@@ -81,16 +81,8 @@ p.signed,
 	padding: 30px 20px 10px;
 }
 
-.about-eyebrow {
-	letter-spacing: 3px;
-	text-transform: uppercase;
-	font-size: 13px;
-	opacity: 0.8;
-	margin-bottom: 6px;
-}
-
 .about-name {
-	font-size: clamp(40px, 8vw, 84px);
+	font-size: clamp(28px, 7vw, 64px);
 	font-weight: 800;
 	margin: 0;
 	background: linear-gradient(135deg, var(--blush), var(--rose-gold));
@@ -98,13 +90,6 @@ p.signed,
 	background-clip: text;
 	-webkit-text-fill-color: transparent;
 	text-shadow: 0 4px 24px rgba(92, 42, 69, 0.4);
-}
-
-.about-tagline {
-	font-weight: 300;
-	opacity: 0.85;
-	margin-top: 6px;
-	font-size: clamp(13px, 2vw, 16px);
 }
 
 /* ---------- Responsive fit for every screen size ---------- */
