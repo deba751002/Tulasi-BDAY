@@ -267,12 +267,6 @@ $(document).ready(function () {
 	$('#our_memories').click(function () {
 		burstConfetti();
 		$('#memories_section').fadeIn('slow');
-		$(this).fadeOut('slow').delay(1500).promise().done(function () {
-			$('#picture_time').fadeIn('slow');
-		});
-	});
-
-	$('#picture_time').click(function () {
-		window.location.replace('src/html/surprise.html');
+		$(this).fadeOut('slow');
 	});
 });
